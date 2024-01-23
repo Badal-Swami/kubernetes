@@ -1,0 +1,19 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: get-task
+  annotations:
+    kubernetes.io/ingress.class: addon-http-application-routing
+spec:
+  
+  rules:
+  - host: get-task.badalswami.online
+    http:
+      paths:
+      - pathType: Prefix
+        path: "/"
+        backend:
+          service:
+            name: get-task-svc
+            port: 
+              number: 80

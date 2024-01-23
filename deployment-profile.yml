@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata: 
+  name: deployment-profile
+spec: 
+  replicas: 5
+  selector:
+    matchExpressions:
+      - key: app
+        operator: In
+        values:
+          - profile
+  template:
+    metadata:
+        name: ngnix-pod
+        namespace: default
+        labels:
+          app: profile
+    spec:
+      containers: 
+        - name: profile-container
+          image: nginx:stable-alpine3.17-slim
+          ports:
+            - containerPort: 80

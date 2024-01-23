@@ -1,0 +1,19 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: delete-task
+  annotations:
+    kubernetes.io/ingress.class: addon-http-application-routing
+spec:
+  
+  rules:
+  - host: delete-task.badalswami.online
+    http:
+      paths:
+      - pathType: Prefix
+        path: "/"
+        backend:
+          service:
+            name: delete-task-svc
+            port: 
+              number: 8000

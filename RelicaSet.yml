@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata: 
+  name: shoes-controller
+spec: 
+  replicas: 3
+  selector:
+    matchExpressions:
+      - key: sticker
+        operator: In
+        values:
+          - addidas
+          - puma
+  template:
+    metadata:
+        name: ngnix-pod
+        namespace: default
+        labels:
+          sticker: puma
+          env: dev
+    spec:
+      containers: 
+        - name: nginx1-container
+          image: nginx
+          ports:
+            - containerPort: 80
+            

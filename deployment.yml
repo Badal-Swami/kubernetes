@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: myapp
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      sticker: puma
+  template:
+    metadata: 
+      name: pod1
+      namespace: default
+      labels:
+        sticker: puma
+    spec:
+      containers: 
+      - name: nginx1-container
+        image: nginx
+        ports:
+          - containerPort: 80
